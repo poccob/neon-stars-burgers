@@ -1,0 +1,41 @@
+.constructor {
+  width: 100%;
+  max-width: 600px;
+}
+
+.wrapConstructorElement > div {
+  width: 89%;
+}
+.wrapConstructorElement {
+  position: relative;
+}
+
+.wrapConstructorItems {
+  height: calc(100vh - 450px);
+  overflow-y: scroll;
+}
+
+.constructor ::-webkit-scrollbar {
+  width: 8px;
+  background-color: #2f2f37;
+}
+
+.constructor ::-webkit-scrollbar-thumb {
+  height: 240px;
+  background-color: #8585ad;
+}
+
+.wrapTotalPrice {
+  text-align: right;
+}
+
+.totalPriceImg {
+  transform: translateY(5px);
+}
+
+.dots {
+  position: absolute;
+  left: 0;
+  top: 30px;
+  cursor: pointer;
+}

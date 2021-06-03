@@ -1,0 +1,21 @@
+.cardIngredient {
+  max-width: 272px;
+  text-align: center;
+  position: relative;
+}
+
+.imgCurrency {
+  transform: translateY(5px);
+}
+
+.ingredientsGrid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+ul {
+  margin-block-end: 0;
+  margin-block-start: 0;
+}
