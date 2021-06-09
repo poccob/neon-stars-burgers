@@ -4,15 +4,8 @@
   position: relative;
 }
 
-.imgCurrency {
+p > svg {
   transform: translateY(5px);
-}
-
-.ingredientsGrid {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 ul {

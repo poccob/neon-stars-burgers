@@ -8,14 +8,14 @@ import styles from './app.module.css';
 
 export default function App() {
   const [ingredients, setIngredients] = React.useState([]);
-  const URL = '../../utils/data.json';
+  const URL = 'https://norma.nomoreparties.space/api/ingredients';
 
   React.useEffect(() => {
     const getIngredients = () => {
       fetch(URL)
         .then((res) => res.json())
-        .then((data) => {
-          setIngredients((ingredients) => data);
+        .then((result) => {
+          setIngredients((ingredients) => result.data);
         })
         .catch((e) => {
           console.log(e);
@@ -24,12 +24,28 @@ export default function App() {
     getIngredients();
   }, []);
 
+  function findIngredientsByType(type) {
+    return ingredients.filter((ingredient) => ingredient.type === type);
+  }
+
+  const ingredientsTypeBun = findIngredientsByType('bun');
+  const ingredientsTypeMain = findIngredientsByType('main');
+  const ingredientsTypeSauce = findIngredientsByType('sauce');
+
   return (
     <main className={styles.app}>
       <AppHeader />
       <div className={styles.mainContentWrap}>
-        <BurgerIngredients ingredients={ingredients} />
-        <BurgerConstructor ingredients={ingredients} />
+        <BurgerIngredients
+          bun={ingredientsTypeBun}
+          main={ingredientsTypeMain}
+          sauce={ingredientsTypeSauce}
+        />
+        <BurgerConstructor
+          bun={ingredientsTypeBun}
+          main={ingredientsTypeMain}
+          sauce={ingredientsTypeSauce}
+        />
       </div>
     </main>
   );

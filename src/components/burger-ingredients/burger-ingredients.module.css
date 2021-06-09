@@ -17,3 +17,10 @@
   height: 400px;
   background-color: #8585ad;
 }
+
+.ingredientsGrid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

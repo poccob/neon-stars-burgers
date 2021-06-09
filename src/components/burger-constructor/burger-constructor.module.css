@@ -6,12 +6,20 @@
 .wrapConstructorElement > div {
   width: 89%;
 }
+
+.dots {
+  position: absolute;
+  left: 0;
+  top: 30px;
+  cursor: pointer;
+}
+
 .wrapConstructorElement {
   position: relative;
 }
 
 .wrapConstructorItems {
-  height: calc(100vh - 450px);
+  height: calc(100vh - 630px);
   overflow-y: scroll;
 }
 
@@ -21,7 +29,7 @@
 }
 
 .constructor ::-webkit-scrollbar-thumb {
-  height: 240px;
+  height: 200px;
   background-color: #8585ad;
 }
 
@@ -29,13 +37,8 @@
   text-align: right;
 }
 
-.totalPriceImg {
+.totalPrice > svg {
+  height: 33px;
+  width: 33px;
   transform: translateY(5px);
-}
-
-.dots {
-  position: absolute;
-  left: 0;
-  top: 30px;
-  cursor: pointer;
 }

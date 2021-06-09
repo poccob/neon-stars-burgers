@@ -9,14 +9,6 @@ import styles from './burger-ingredients.module.css';
 export default function BurgerIngredients(props) {
   const [current, setCurrent] = React.useState('Булки');
 
-  function findIngredientsByType(type) {
-    return props.ingredients.filter((ingredient) => ingredient.type === type);
-  }
-
-  const ingredientsTypeBun = findIngredientsByType('bun');
-  const ingredientsTypeMain = findIngredientsByType('main');
-  const ingredientsTypeSauce = findIngredientsByType('sauce');
-
   return (
     <section className={`${styles.ingredients} mt-10 mr-10`}>
       <h2 className='text text_type_main-large mb-5'>Соберите бургер</h2>
@@ -33,22 +25,55 @@ export default function BurgerIngredients(props) {
       </div>
       <div className={`${styles.ingredientsWrapItems} mt-10`}>
         <h3 className='text text_type_main-medium'>Булки</h3>
-        <IngredientsCard ingredientsType={ingredientsTypeBun} />
+        <ul className={`${styles.ingredientsGrid} pt-6 pb-2 pl-4 pr-4`}>
+          {props.bun.map((ingredient) => (
+            <li key={ingredient._id}>
+              <IngredientsCard ingredient={ingredient} />
+            </li>
+          ))}
+        </ul>
         <h3 className='text text_type_main-medium'>Соусы</h3>
-        <IngredientsCard ingredientsType={ingredientsTypeSauce} />
+        <ul className={`${styles.ingredientsGrid} pt-6 pb-2 pl-4 pr-4`}>
+          {props.sauce.map((ingredient) => (
+            <li key={ingredient._id}>
+              <IngredientsCard ingredient={ingredient} />
+            </li>
+          ))}
+        </ul>
         <h3 className='text text_type_main-medium'>Начинки</h3>
-        <IngredientsCard ingredientsType={ingredientsTypeMain} />
+        <ul className={`${styles.ingredientsGrid} pt-6 pb-2 pl-4 pr-4`}>
+          {props.main.map((ingredient, index) => (
+            <li key={ingredient._id}>
+              <IngredientsCard ingredient={ingredient} />
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
 }
 
 BurgerIngredients.propTypes = {
-  ingredients: PropTypes.arrayOf(
+  bun: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string,
       name: PropTypes.string,
-      type: PropTypes.string,
+      price: PropTypes.number,
+      image: PropTypes.string,
+    }),
+  ),
+  main: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string,
+      name: PropTypes.string,
+      price: PropTypes.number,
+      image: PropTypes.string,
+    }),
+  ),
+  sauce: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string,
+      name: PropTypes.string,
       price: PropTypes.number,
       image: PropTypes.string,
     }),
