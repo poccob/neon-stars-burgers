@@ -29,17 +29,24 @@ export default function IngredientsCard(props) {
   return (
     <>
       <div onClick={hedleVisibleModalIngredients} className={`${styles.cardIngredient} mb-8`}>
-        <img src={props.ingredient.image} alt={props.ingredient.name} />
+        <img src={props.image} alt={props.name} />
         <Counter count={1} size='default' />
         <p className='text text_type_digits-default mt-1 mb-1'>
-          {props.ingredient.price}&nbsp;
+          {props.price}&nbsp;
           <CurrencyIcon type='primary' />
         </p>
-        <p className='text text_type_main-default mb-6'>{props.ingredient.name}</p>
+        <p className='text text_type_main-default mb-6'>{props.name}</p>
       </div>
       {visibleModalIngredients && (
         <Modal title={'Детали ингридиента'} visibleModal={hedleVisibleModalIngredients}>
-          <IngredientDetails ingredient={props.ingredient} />
+          <IngredientDetails
+            name={props.name}
+            calories={props.calories}
+            proteins={props.proteins}
+            fat={props.fat}
+            carbohydrates={props.carbohydrates}
+            image_large={props.image_large}
+          />
         </Modal>
       )}
     </>
@@ -47,11 +54,7 @@ export default function IngredientsCard(props) {
 }
 
 IngredientsCard.propTypes = {
-  ingredient: PropTypes.objectOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      price: PropTypes.number,
-      image: PropTypes.string,
-    }),
-  ),
+  name: PropTypes.string,
+  price: PropTypes.number,
+  image: PropTypes.string,
 };

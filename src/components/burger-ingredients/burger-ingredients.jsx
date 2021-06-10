@@ -28,7 +28,16 @@ export default function BurgerIngredients(props) {
         <ul className={`${styles.ingredientsGrid} pt-6 pb-2 pl-4 pr-4`}>
           {props.bun.map((ingredient) => (
             <li key={ingredient._id}>
-              <IngredientsCard ingredient={ingredient} />
+              <IngredientsCard
+                name={ingredient.name}
+                price={ingredient.price}
+                image={ingredient.image}
+                calories={ingredient.calories}
+                proteins={ingredient.proteins}
+                fat={ingredient.fat}
+                carbohydrates={ingredient.carbohydrates}
+                image_large={ingredient.image_large}
+              />
             </li>
           ))}
         </ul>
@@ -36,15 +45,33 @@ export default function BurgerIngredients(props) {
         <ul className={`${styles.ingredientsGrid} pt-6 pb-2 pl-4 pr-4`}>
           {props.sauce.map((ingredient) => (
             <li key={ingredient._id}>
-              <IngredientsCard ingredient={ingredient} />
+              <IngredientsCard
+                name={ingredient.name}
+                price={ingredient.price}
+                image={ingredient.image}
+                calories={ingredient.calories}
+                proteins={ingredient.proteins}
+                fat={ingredient.fat}
+                carbohydrates={ingredient.carbohydrates}
+                image_large={ingredient.image_large}
+              />
             </li>
           ))}
         </ul>
         <h3 className='text text_type_main-medium'>Начинки</h3>
         <ul className={`${styles.ingredientsGrid} pt-6 pb-2 pl-4 pr-4`}>
-          {props.main.map((ingredient, index) => (
+          {props.main.map((ingredient) => (
             <li key={ingredient._id}>
-              <IngredientsCard ingredient={ingredient} />
+              <IngredientsCard
+                name={ingredient.name}
+                price={ingredient.price}
+                image={ingredient.image}
+                calories={ingredient.calories}
+                proteins={ingredient.proteins}
+                fat={ingredient.fat}
+                carbohydrates={ingredient.carbohydrates}
+                image_large={ingredient.image_large}
+              />
             </li>
           ))}
         </ul>
