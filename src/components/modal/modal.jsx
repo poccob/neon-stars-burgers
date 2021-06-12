@@ -8,6 +8,23 @@ import ModalOverlay from '../modal-overlay/modal-overlay';
 import styles from './modal.module.css';
 
 export default function Modal(props) {
+  const isOpen = props.isOpen;
+  const visibleModal = props.visibleModal;
+
+  React.useEffect(() => {
+    const keyPress = (event) => {
+      if (isOpen && event.keyCode === 27) {
+        visibleModal(false);
+      }
+    };
+    if (isOpen) {
+      document.addEventListener('keydown', keyPress);
+    }
+    return () => {
+      document.removeEventListener('keydown', keyPress);
+    };
+  }, [visibleModal, isOpen]);
+
   return ReactDOM.createPortal(
     <>
       <ModalOverlay visibleModal={props.visibleModal} s>
@@ -25,7 +42,7 @@ export default function Modal(props) {
 }
 
 Modal.propTypes = {
-  visibleModal: PropTypes.func,
+  visibleModal: PropTypes.func.isRequired,
   title: PropTypes.string,
-  children: PropTypes.object,
+  children: PropTypes.element.isRequired,
 };

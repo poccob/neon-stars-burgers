@@ -13,9 +13,14 @@ export default function App() {
   React.useEffect(() => {
     const getIngredients = () => {
       fetch(URL)
-        .then((res) => res.json())
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+          return Promise.reject(`Ошибка ${res.status}`);
+        })
         .then((result) => {
-          setIngredients((ingredients) => result.data);
+          setIngredients(result.data);
         })
         .catch((e) => {
           console.log(e);

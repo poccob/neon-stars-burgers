@@ -17,18 +17,6 @@ export default function BurgerConstructor(props) {
     setVisibleModal(!visibleModal);
   };
 
-  React.useEffect(() => {
-    const keyPress = (event) => {
-      if (visibleModal && event.keyCode === 27) {
-        setVisibleModal(false);
-      }
-    };
-    document.addEventListener('keydown', keyPress);
-    return () => {
-      document.removeEventListener('keydown', keyPress);
-    };
-  }, [visibleModal]);
-
   const ingredients = [...props.main, ...props.sauce];
   const bun = props.bun[0];
 
@@ -42,7 +30,7 @@ export default function BurgerConstructor(props) {
                 <ConstructorElement
                   type='top'
                   isLocked={true}
-                  text={bun.name}
+                  text={`${bun.name} (верх)`}
                   price={bun.price}
                   thumbnail={bun.image}
                 />
@@ -67,13 +55,13 @@ export default function BurgerConstructor(props) {
               </ul>
             </li>
             <li className={`${styles.wrapConstructorElement} pl-8 pr-2`}>
-              {props.bun[0] && (
+              {bun && (
                 <ConstructorElement
                   type='bottom'
                   isLocked={true}
-                  text={props.bun[0].name}
-                  price={props.bun[0].price}
-                  thumbnail={props.bun[0].image}
+                  text={`${bun.name} (низ)`}
+                  price={bun.price}
+                  thumbnail={bun.image}
                 />
               )}
             </li>
@@ -89,7 +77,7 @@ export default function BurgerConstructor(props) {
         </div>
       </section>
       {visibleModal && (
-        <Modal visibleModal={hedleVisibleModal}>
+        <Modal visibleModal={hedleVisibleModal} isOpen={visibleModal}>
           <OrderDetails />
         </Modal>
       )}
@@ -100,25 +88,25 @@ export default function BurgerConstructor(props) {
 BurgerConstructor.propTypes = {
   bun: PropTypes.arrayOf(
     PropTypes.shape({
-      name: PropTypes.string,
-      price: PropTypes.number,
-      image: PropTypes.string,
-    }),
+      name: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      image: PropTypes.string.isRequired,
+    }).isRequired,
   ),
   main: PropTypes.arrayOf(
     PropTypes.shape({
-      _id: PropTypes.string,
-      name: PropTypes.string,
-      price: PropTypes.number,
-      image: PropTypes.string,
-    }),
+      _id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      image: PropTypes.string.isRequired,
+    }).isRequired,
   ),
   sauce: PropTypes.arrayOf(
     PropTypes.shape({
-      _id: PropTypes.string,
-      name: PropTypes.string,
-      price: PropTypes.number,
-      image: PropTypes.string,
-    }),
+      _id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      image: PropTypes.string.isRequired,
+    }).isRequired,
   ),
 };

@@ -18,6 +18,6 @@ export default function ModalOverlay(props) {
 }
 
 ModalOverlay.propTypes = {
-  visibleModal: PropTypes.func,
-  children: PropTypes.object,
+  visibleModal: PropTypes.func.isRequired,
+  children: PropTypes.object.isRequired,
 };

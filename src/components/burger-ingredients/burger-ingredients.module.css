@@ -24,3 +24,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
+.wrapTab {
+  display: flex;
+}
